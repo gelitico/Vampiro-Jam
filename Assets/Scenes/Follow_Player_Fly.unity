@@ -1277,6 +1277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 127187787}
   flightSpeed: 3
+  alturaanyadida: 2
 --- !u!1 &1566783797
 GameObject:
   m_ObjectHideFlags: 0
