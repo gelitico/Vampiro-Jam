@@ -7,6 +7,8 @@ public class ProjectileSpawner : MonoBehaviour
     public float ShootStrength;
     public GameObject AjoProjectile;
     private InputAction shootAction;
+
+    public bool canShoot = false;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +33,7 @@ public class ProjectileSpawner : MonoBehaviour
     }
     private void OnAttackButtonPressed(InputAction.CallbackContext _)
     {
+        if(canShoot)
         Fire();
     }
     private void OnDestroy()
