@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Projectile : MonoBehaviour
+public class ProjectileSpawner : MonoBehaviour
 {
     public Transform transform;
     public float ShootStrength;
@@ -37,4 +37,6 @@ public class Projectile : MonoBehaviour
     {
         shootAction.started-=OnAttackButtonPressed;
     }
+
+    
 }

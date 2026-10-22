@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 Direction;
 
     private float LookAngle;
+
+    public float BufferTime = 0.15f;
+    private float BufferTimer;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,13 +49,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector2 moveVector = moveInput.ReadValue<Vector2>();
-        Vector2 mouseDelta = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());
-
-        if(!characterController.isGrounded)
-            Jumping=false;
+        Vector2 mouseDelta = new Vector2(Mouse.current.delta.x.ReadValue(), Mouse.current.delta.y.ReadValue());  
        
         HandleMovement(moveVector);
         HandleLooking(mouseDelta);
+
+        /* si clicas jump, empieza un timer de 0,15. si antes de que ese timer llegue a 0 estás en el 
+        suelo, el personaje salta (Jump Buffer)  */ 
+
+        if(BufferTimer > 0f)
+            BufferTimer -= Time.deltaTime;
+
+        if(characterController.isGrounded && BufferTimer > 0f)
+            Jumping = true;
+            BufferTimer = 0;
     }
 
     private void HandleMovement(Vector2 moveVector)
@@ -64,15 +74,14 @@ public class PlayerController : MonoBehaviour
 
         Vector2 newSpeed = new Vector2(moveVector.y * MoveSpeed, moveVector.x * MoveSpeed);
         Direction = (forward*newSpeed.x) + (right*newSpeed.y);
-        Direction.y = oldY;
 
         newSpeed = new Vector2(moveVector.y * MoveSpeed, moveVector.x * MoveSpeed);
-
         Direction = (forward * newSpeed.x) + (right * newSpeed.y);
         
         if(Jumping && characterController.isGrounded)
         {
-            Direction.y = JumpImpulse;   
+            Direction.y = JumpImpulse;  
+            Jumping = false; 
         }
         else
         Direction.y = oldY;
@@ -88,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext _)
     {
-        Jumping=true;
+        BufferTimer = BufferTime;
     }
 
     private void HandleLooking(Vector2 mouseDelta)
