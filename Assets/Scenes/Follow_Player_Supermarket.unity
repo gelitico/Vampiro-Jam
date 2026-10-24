@@ -1148,6 +1148,7 @@ GameObject:
   - component: {fileID: 1324690804}
   - component: {fileID: 1324690805}
   - component: {fileID: 1324690806}
+  - component: {fileID: 1324690807}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1320,6 +1321,20 @@ MonoBehaviour:
   Player: {fileID: 127187787}
   flightSpeed: 1
   alturaanyadida: 1
+--- !u!114 &1324690807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324690797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ea36fb6bca2c4478f4545c26ca42a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialNuevo: {fileID: 2100000, guid: c718f5492e43a4d48b4993802ec92b28, type: 2}
+  materialViejo: {fileID: 2100000, guid: 9a50e618c9699e0428a607b0551def9a, type: 2}
 --- !u!1 &1566783797
 GameObject:
   m_ObjectHideFlags: 0

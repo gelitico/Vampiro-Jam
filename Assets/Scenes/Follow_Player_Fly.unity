@@ -191,6 +191,7 @@ MonoBehaviour:
   Gravity: 9.8
   CameraSensitivity: 0.25
   CameraAngleMax: 45
+  BufferTime: 0.15
 --- !u!143 &127187785
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0769998be7ac3145ab7a418dd179435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpawner: {fileID: 0}
 --- !u!1 &1324690797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1121,7 @@ GameObject:
   - component: {fileID: 1324690803}
   - component: {fileID: 1324690804}
   - component: {fileID: 1324690805}
+  - component: {fileID: 1324690806}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1278,6 +1281,20 @@ MonoBehaviour:
   Player: {fileID: 127187787}
   flightSpeed: 3
   alturaanyadida: 2
+--- !u!114 &1324690806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324690797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ea36fb6bca2c4478f4545c26ca42a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialNuevo: {fileID: 2100000, guid: c718f5492e43a4d48b4993802ec92b28, type: 2}
+  materialViejo: {fileID: 2100000, guid: 9a50e618c9699e0428a607b0551def9a, type: 2}
 --- !u!1 &1566783797
 GameObject:
   m_ObjectHideFlags: 0

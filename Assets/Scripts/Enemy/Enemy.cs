@@ -4,11 +4,13 @@ public class Enemy : MonoBehaviour
 {
     public int vidas;
     private int currentHealth;
+    private Change_Mats Change_Mat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = vidas;
+        Change_Mat = GetComponent<Change_Mats>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int amount)
     {
         currentHealth-=amount;
+
+        if (Change_Mat != null)
+        {
+        Change_Mat.ActivarChangeMat();
+        }
     }
 }
  
