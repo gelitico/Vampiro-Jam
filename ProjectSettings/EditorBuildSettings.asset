@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Calle_Parkour.unity
     guid: b58619b7fff487544995f1211b974b73
+  - enabled: 1
+    path: Assets/Scenes/Death_Scene.unity
+    guid: 1c7ea110ee35f2048a93bfa7620979fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
