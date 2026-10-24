@@ -15,6 +15,9 @@ public class Enemy_Collide : MonoBehaviour
 
     private GameObject cajaAmmoCercana;
 
+    private ControlManoUI manoUI;
+    private bool estabaMirandoAmmo = false;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -45,15 +48,41 @@ public class Enemy_Collide : MonoBehaviour
     void Start()
     {
         camaraPrincipal = Camera.main;
+
+        manoUI = FindObjectOfType<ControlManoUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool mirandoAmmoAhora = false;
+
+        if (nearAmmo)
+        {
+            mirandoAmmoAhora = EstaMirandoAlObjeto();
+
+           
+            if (mirandoAmmoAhora && !estabaMirandoAmmo)
+            {
+                if (manoUI != null)
+                {
+                    manoUI.ActivarAccion("lanzar");
+                }
+            }
+        }
+
+        estabaMirandoAmmo = mirandoAmmoAhora;
+
          if(nearAmmo && Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (EstaMirandoAlObjeto())
             {
+
+                if (manoUI != null)
+                {
+                    manoUI.ActivarAccion("coger");
+                }
+                
                 if (projectileSpawner != null)
                 {
                     projectileSpawner.canShoot = true;

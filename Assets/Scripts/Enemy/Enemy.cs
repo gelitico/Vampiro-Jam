@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
     public int vidas;
     private int currentHealth;
-    public GameObject winScreenUI;
+  
     private Change_Mats Change_Mat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -13,10 +14,7 @@ public class Enemy : MonoBehaviour
         currentHealth = vidas;
         Change_Mat = GetComponent<Change_Mats>();
 
-        if (winScreenUI != null)
-        {
-            winScreenUI.SetActive(false); 
-        }
+        
     }
 
     // Update is called once per frame
@@ -28,12 +26,9 @@ public class Enemy : MonoBehaviour
             Time.timeScale = 0f;
             Cursor.visible = true;                  
             Cursor.lockState = CursorLockMode.None;
-
+            SceneManager.LoadScene("Win_Scene");
            
-            if (winScreenUI != null)
-            {
-                winScreenUI.SetActive(true);
-            }
+           
         }
     }
     public void TakeDamage(int amount)

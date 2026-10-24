@@ -127,6 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawner: {fileID: 5947355885392533425}
   deathSceneName: Death_Scene
+  capaInteractuable:
+    serializedVersion: 2
+    m_Bits: 0
+  distanciaMaximaRayo: 3
 --- !u!114 &6869806783149819773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132458cc8ad80ff49a118a4d8341acec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 8487488447857432179}
+  puntoDeDisparo: {fileID: 0}
   ShootStrength: 10
   AjoProjectile: {fileID: 980648458804095524, guid: ad81b85ae4b009b478cb5b5aa3864f54, type: 3}
   canShoot: 0
@@ -304,7 +308,7 @@ Transform:
   m_GameObject: {fileID: 2155833646446248447}
   serializedVersion: 2
   m_LocalRotation: {x: -0.07024598, y: -0, z: -0, w: 0.99752975}
-  m_LocalPosition: {x: 0.045, y: -0.551, z: 0.521}
+  m_LocalPosition: {x: 0.19, y: -0.35, z: 0.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

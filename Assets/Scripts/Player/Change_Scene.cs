@@ -20,19 +20,44 @@ public class Change_Scene : MonoBehaviour
     private GameObject jugadorRef; 
     private Camera camaraPrincipal; 
 
+    //---------------------------------------------MANO
+    private ControlManoUI manoUI;
+    private bool estabaMirando = false;
+
     void Start()
     {
         camaraPrincipal = Camera.main;
+
+        manoUI = FindObjectOfType<ControlManoUI>();
     }
 
     void Update()
     {
+        bool mirandoAhora = false;
+        if (jugadorCerca)
+        {
+            mirandoAhora = EstaMirandoAlObjeto();
+
+            if (mirandoAhora && !estabaMirando)
+            {
+                if (manoUI != null)
+                {
+                    
+                    manoUI.ActivarAccion("lanzar"); 
+                }
+            }
+        }
+
+        estabaMirando = mirandoAhora;
         // Si el jugador está cerca y presiona el clic izquierdo
         if (jugadorCerca && Mouse.current.leftButton.wasPressedThisFrame)
         {
             // ... y además está mirando directamente al objeto interactuable
             if (EstaMirandoAlObjeto())
-            {
+            {   if (manoUI != null)
+                {
+                    manoUI.ActivarAccion("clicar");
+                }
                 IniciarCambioEscena();
             }
         }

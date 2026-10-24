@@ -3,18 +3,22 @@ using UnityEngine.InputSystem;
 
 public class ProjectileSpawner : MonoBehaviour
 {
-    public Transform transform;
+    public Transform puntoDeDisparo;
     public float ShootStrength;
     public GameObject AjoProjectile;
     private InputAction shootAction;
 
     public bool canShoot = false;
+
+    private ControlManoUI manoUI;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         shootAction = InputSystem.actions.FindAction("Attack");
         shootAction.started += OnAttackButtonPressed;
+
+        manoUI = FindObjectOfType<ControlManoUI>();
     }
 
     // Update is called once per frame
@@ -26,10 +30,15 @@ public class ProjectileSpawner : MonoBehaviour
     void Fire()
     {
         print("shootin");
-        GameObject newProjectile = Instantiate(AjoProjectile, transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(AjoProjectile, puntoDeDisparo.position, Quaternion.identity);
 
         Rigidbody rigidbody = newProjectile.GetComponent<Rigidbody>();
-        rigidbody.AddForce(transform.forward*ShootStrength, ForceMode.Impulse);
+        rigidbody.AddForce(puntoDeDisparo.forward*ShootStrength, ForceMode.Impulse);
+
+        if (manoUI != null)
+        {
+            manoUI.ActivarAccion("lanzar");
+        }
     }
     private void OnAttackButtonPressed(InputAction.CallbackContext _)
     {
