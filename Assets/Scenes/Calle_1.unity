@@ -3016,7 +3016,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   distanciaMaximaRayo: 3
-  segundosCongelado: 4
+  segundosCongelado: 0
 --- !u!1 &562337501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10293,6 +10293,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8589979423194809277, guid: c769052050753294b902350b08320b9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888013855717270792, guid: c769052050753294b902350b08320b9b, type: 3}
+      propertyPath: m_Radius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888013855717270792, guid: c769052050753294b902350b08320b9b, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888013855717270792, guid: c769052050753294b902350b08320b9b, type: 3}
+      propertyPath: m_Center.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
