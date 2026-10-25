@@ -8,12 +8,17 @@ public class Enemy : MonoBehaviour
   
     private Change_Mats Change_Mat;
 
+    public AudioSource audioDaño;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = vidas;
         Change_Mat = GetComponent<Change_Mats>();
-
+        if (audioDaño == null)
+        {
+            audioDaño = GetComponent<AudioSource>();
+        }
         
     }
 
@@ -38,6 +43,20 @@ public class Enemy : MonoBehaviour
         if (Change_Mat != null)
         {
         Change_Mat.ActivarChangeMat();
+        }
+
+        ReproducirSonidoDaño();
+    }
+
+    private void ReproducirSonidoDaño()
+    {
+        if (audioDaño != null)
+        {
+            
+            if (audioDaño.clip != null)
+            {
+                audioDaño.PlayOneShot(audioDaño.clip);
+            }
         }
     }
 }

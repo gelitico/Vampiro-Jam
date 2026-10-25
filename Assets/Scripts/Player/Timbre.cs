@@ -6,6 +6,8 @@ public class Timbre : MonoBehaviour
     public LayerMask capaInteractuable; 
     public float distanciaMaximaRayo = 3f;
 
+    public AudioSource audioTimbre;
+
     private bool jugadorCerca = false; 
     private GameObject jugadorRef; 
     private Camera camaraPrincipal;
@@ -47,9 +49,24 @@ public class Timbre : MonoBehaviour
                 {
                     manoUI.ActivarAccion("clicar");
                 }
+                ReproducirSonidoTimbre();
                 print("sonio jaj");
             }
         }
+    }
+
+    private void ReproducirSonidoTimbre()
+    {
+        if (audioTimbre != null)
+        {
+           
+            if (audioTimbre.clip != null)
+            {
+                audioTimbre.PlayOneShot(audioTimbre.clip);
+            }
+            
+        }
+        
     }
 
     private bool EstaMirandoAlObjeto()
