@@ -129,7 +129,7 @@ MonoBehaviour:
   deathSceneName: Death_Scene
   capaInteractuable:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   distanciaMaximaRayo: 3
 --- !u!114 &6869806783149819773
 MonoBehaviour:
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132458cc8ad80ff49a118a4d8341acec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntoDeDisparo: {fileID: 0}
+  puntoDeDisparo: {fileID: 8487488447857432179}
   ShootStrength: 10
   AjoProjectile: {fileID: 980648458804095524, guid: ad81b85ae4b009b478cb5b5aa3864f54, type: 3}
   canShoot: 0
