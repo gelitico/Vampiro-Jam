@@ -8,7 +8,8 @@ public class Trigger_Death : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+    
+
     }
 
     // Update is called once per frame
@@ -24,6 +25,9 @@ public class Trigger_Death : MonoBehaviour
             Cursor.visible = true;                  
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(deathSceneName);
+           
+            Destroy(other.gameObject);
+            
         }
     }
 }

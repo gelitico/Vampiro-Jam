@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37a58fc8625a0a4d96017ac704d157b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelUI: {fileID: 2101166183}
 --- !u!4 &1590117449
 Transform:
   m_ObjectHideFlags: 0
@@ -1186,7 +1187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101166183}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1225,7 +1226,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1590117448}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: RetryGame
+        m_MethodName: DeletePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

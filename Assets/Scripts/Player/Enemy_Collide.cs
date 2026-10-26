@@ -27,6 +27,7 @@ public class Enemy_Collide : MonoBehaviour
             Cursor.visible = true;                  
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(deathSceneName);
+            Destroy(this.gameObject);
         }
         else if(other.gameObject.tag == "Ammo")
         {

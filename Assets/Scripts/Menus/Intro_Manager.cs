@@ -31,6 +31,14 @@ public class IntroManager : MonoBehaviour
         }
     }
 
+    void SaltoCinematica()
+    {
+        if (panelCinematica == null)
+        {
+            StartCoroutine(EfectoFlashBlanco());
+        }
+    }
+
     void TerminoCinematica(VideoPlayer vp)
     {
         if (videoPlayer != null)
