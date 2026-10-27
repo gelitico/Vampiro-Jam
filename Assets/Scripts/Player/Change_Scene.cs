@@ -24,6 +24,10 @@ public class Change_Scene : MonoBehaviour
     private ControlManoUI manoUI;
     private bool estabaMirando = false;
 
+    private bool yaClickado=false;
+
+   
+
     void Start()
     {
         camaraPrincipal = Camera.main;
@@ -58,7 +62,9 @@ public class Change_Scene : MonoBehaviour
                 {
                     manoUI.ActivarAccion("clicar");
                 }
+
                 IniciarCambioEscena();
+                yaClickado=true;
             }
         }
     }
@@ -100,6 +106,8 @@ public class Change_Scene : MonoBehaviour
 
     private void IniciarCambioEscena()
     {
+        if(!yaClickado)
+        {
         if (jugadorRef != null)
         {
             // Evitamos que el jugador se destruya al cambiar de escena
@@ -128,6 +136,8 @@ public class Change_Scene : MonoBehaviour
 
         // Cargamos la nueva escena de forma inmediata
         SceneManager.LoadScene(nombreEscenaAInvocarse);
+        yaClickado=false;
+        }
     }
 
     private IEnumerator TemporizadorCongelarJuego(float tiempoEspera, GameObject jugador)
