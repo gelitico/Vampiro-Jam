@@ -5,17 +5,16 @@ using System.Collections;
 
 public class Change_Scene : MonoBehaviour
 {
+    //serialize para que variable privada sea visible y editable desde en el inspector, pero no pública
     [SerializeField] private string nombreEscenaAInvocarse;
 
-    [Header("Configuracion de Interaccion")]
+    //variable para que el raycast solo detecte objetos que pertenezcan a x capas (p.ej la del ammo o el timbre)
     public LayerMask capaInteractuable; 
     public float distanciaMaximaRayo = 3f; 
 
-    [Header("Configuracion de la Pausa")]
-    [Tooltip("Segundos que el juego y el jugador permanecerán congelados al entrar a la nueva escena")]
     [SerializeField] private float segundosCongelado = 5f;
 
-    // Variables de control internas
+    //variables para controlar jugador y camara
     private bool jugadorCerca = false; 
     private GameObject jugadorRef; 
     private Camera camaraPrincipal; 
@@ -27,7 +26,6 @@ public class Change_Scene : MonoBehaviour
     private bool yaClickado=false;
 
    
-
     void Start()
     {
         camaraPrincipal = Camera.main;
@@ -40,23 +38,23 @@ public class Change_Scene : MonoBehaviour
         bool mirandoAhora = false;
         if (jugadorCerca)
         {
-            mirandoAhora = EstaMirandoAlObjeto();
+            mirandoAhora = EstaMirandoAlObjeto(); //hace el raycast
 
-            if (mirandoAhora && !estabaMirando)
+            if (mirandoAhora && !estabaMirando) //si lo mira ahora, pero en el fotograma anterior no (por eso !) lo estaba mirando
             {
                 if (manoUI != null)
                 {
-                    
                     manoUI.ActivarAccion("lanzar"); 
                 }
             }
         }
 
+        //se guarda el estado actual para que sirva de comparativa en el proximo fotograma en el bucle
         estabaMirando = mirandoAhora;
-        // Si el jugador está cerca y presiona el clic izquierdo
+        //si el jugador esta cerca y presiona el clic izquierdo
         if (jugadorCerca && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // ... y además está mirando directamente al objeto interactuable
+            // y esta mirando directamente al objeto interactuable
             if (EstaMirandoAlObjeto())
             {   if (manoUI != null)
                 {
@@ -71,11 +69,15 @@ public class Change_Scene : MonoBehaviour
 
     private bool EstaMirandoAlObjeto()
     {
+        //si la camara se destruye o no existe, cancela todo
         if (camaraPrincipal == null) return false;
 
+        //crea rayo que sale en la camara y apunta hacia el centro del viewport (por eso 0.5, 0.5)
         Ray rayo = camaraPrincipal.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        //el motor de fisica guarda el choque (distancia, punto de impacto) y se guarda en el "hit"
         RaycastHit hit;
 
+        // lanza el rayo al espacio 3D usando la distancia maxima que se declaro anres y con el filtro de la capa interactuable
         if (Physics.Raycast(rayo, out hit, distanciaMaximaRayo, capaInteractuable))
         {
             if (hit.transform == this.transform)

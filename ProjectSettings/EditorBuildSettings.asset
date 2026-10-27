@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Movement_Test.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Intro.unity
+    guid: 6a0589243e620594e9bd0b40da8edd1d
   - enabled: 1
-    path: Assets/Scenes/Change_Scene.unity
-    guid: 534f9f3831a2e2d4589209675ae5f7bb
-  - enabled: 1
-    path: Assets/Scenes/Scene_To.unity
-    guid: ddf272dc862223a489c604126bedb0ee
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 6f482b27db2abe740b65925adfe48266
   - enabled: 1
     path: Assets/Scenes/Calle_1.unity
     guid: c3469aed75e435a4e9c1f3676e6e6fc0
@@ -21,20 +18,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Calle_Parkour.unity
     guid: b58619b7fff487544995f1211b974b73
   - enabled: 1
-    path: Assets/Scenes/Death_Scene.unity
-    guid: 1c7ea110ee35f2048a93bfa7620979fe
-  - enabled: 1
     path: Assets/Scenes/Badulake.unity
     guid: 34742d9467394a942bda738875ef3f96
   - enabled: 1
-    path: Assets/Scenes/Main_Menu.unity
-    guid: 6f482b27db2abe740b65925adfe48266
+    path: Assets/Scenes/Death_Scene.unity
+    guid: 1c7ea110ee35f2048a93bfa7620979fe
   - enabled: 1
     path: Assets/Scenes/Win_Scene.unity
     guid: 51e03750e243f604092c28d539724134
-  - enabled: 1
-    path: Assets/Scenes/Intro.unity
-    guid: 6a0589243e620594e9bd0b40da8edd1d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
