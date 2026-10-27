@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy_Fly : MonoBehaviour
 {
-    public Transform Player;
+    public Transform Player;//posicion rotacion y escala del jugador
     public float flightSpeed = 5f; 
     public float alturaanyadida = 1f;
 
@@ -17,21 +17,21 @@ public class Enemy_Fly : MonoBehaviour
     {
         if (Player == null)
         {
-            GameObject jugadorBuscado = GameObject.FindWithTag("Player");
+            GameObject jugadorBuscado = GameObject.FindWithTag("Player");//buscamos cualquier obj con el tag palyer
             
             if (jugadorBuscado != null)
             {
-                Player = jugadorBuscado.transform;
+                Player = jugadorBuscado.transform;//si lo encuentra guarda el componente transform del del tag en player
             }
         }
 
-        // 2. SOLO SI YA ENCONTRÓ AL JUGADOR, SE MUEVE HACIA ÉL
+        //  SOLO SI YA ENCONTRÓ AL JUGADOR, SE MUEVE HACIA ÉL
         if (Player != null)
         {
             // Movimiento hacia el personaje        
-            Vector3 targetPosition = new Vector3(Player.position.x, Player.position.y + alturaanyadida, Player.position.z);
+            Vector3 targetPosition = new Vector3(Player.position.x, Player.position.y + alturaanyadida, Player.position.z);//creamos posicion de destino(target position) con las coordenadas del jugador
         
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, flightSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, flightSpeed * Time.deltaTime);//movre towards mueve al enemigo desde su posicion actual, a la posicion de destino 
         }
     }
 }

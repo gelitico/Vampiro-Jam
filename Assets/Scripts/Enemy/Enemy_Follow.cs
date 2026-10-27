@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class Enemy_Follow : MonoBehaviour
 {
 
-    public NavMeshAgent enemy;
+    public NavMeshAgent enemy;//calcula la ruta x el suelo
     public Transform Player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,11 +18,11 @@ public class Enemy_Follow : MonoBehaviour
     {
         if (Player == null)
         {
-            GameObject jugadorBuscado = GameObject.FindWithTag("Player");
+            GameObject jugadorBuscado = GameObject.FindWithTag("Player");//encontrar cualquiera con la etiqueta player
             
             if (jugadorBuscado != null)
             {
-                Player = jugadorBuscado.transform;
+                Player = jugadorBuscado.transform;//guardamos el transform
             }
         }
 
@@ -30,7 +30,7 @@ public class Enemy_Follow : MonoBehaviour
         if (Player != null)
         {
             // Movimiento hacia el personaje        
-            enemy.SetDestination(Player.position);
+            enemy.SetDestination(Player.position);//ordena al navmesh agennt que calcule el camino mas corto hasta el jugador
         }
     }
 }

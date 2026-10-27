@@ -4,11 +4,17 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 
 {
-    public GameObject panelUI;
+    
     public void RetryGame()
     {
-        Time.timeScale = 1f;
+       
         SceneManager.LoadScene("Calle_1");
+    }
+
+    public void LoadMainMenu()
+    {
+        
+        SceneManager.LoadScene("Main_Menu");
     }
 
     // Cierra el juego
@@ -18,8 +24,5 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void DeletePanel()
-    {
-        Destroy(panelUI);
-    }
+    
 }

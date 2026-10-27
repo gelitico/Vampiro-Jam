@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    public int vidas;
-    private int currentHealth;
+    public int vidas; 
+    private int currentHealth; 
   
-    private Change_Mats Change_Mat;
+    private Change_Mats Change_Mat; //referencia a otro script change mats
 
     public AudioSource audioDaño;
 
@@ -14,11 +14,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = vidas;
-        Change_Mat = GetComponent<Change_Mats>();
-        if (audioDaño == null)
-        {
-            audioDaño = GetComponent<AudioSource>();
-        }
+        Change_Mat = GetComponent<Change_Mats>();//busca change mats en este game object y lo prepara
         
     }
 
@@ -27,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         //muerte
         if(currentHealth <=0){
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Time.timeScale = 0f;
             Cursor.visible = true;                  
             Cursor.lockState = CursorLockMode.None;
@@ -55,7 +51,7 @@ public class Enemy : MonoBehaviour
             
             if (audioDaño.clip != null)
             {
-                audioDaño.PlayOneShot(audioDaño.clip);
+                audioDaño.PlayOneShot(audioDaño.clip);//reproducir audio una sola vez
             }
         }
     }
