@@ -29305,15 +29305,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225263664628314498, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: flightSpeed
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5225263664628314498, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: alturaanyadida
-      value: 2.28
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5428679232489548350, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5547031871122603183, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7049534146259153418, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29354,6 +29358,22 @@ PrefabInstance:
     - target: {fileID: 7049534146259153418, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437910331279118016, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6251643
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437910331279118016, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437910331279118016, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
+      propertyPath: m_Center.z
+      value: -0.04248691
+      objectReference: {fileID: 0}
+    - target: {fileID: 7437910331279118016, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

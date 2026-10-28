@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Change_Scene : MonoBehaviour
 {
-    //serialize para que variable privada sea visible y editable desde en el inspector, pero no pública
+    //serialize para que variable privada sea visible y editable desde en el inspector, pero no publica
     [SerializeField] private string nombreEscenaAInvocarse;
 
     //variable para que el raycast solo detecte objetos que pertenezcan a x capas (p.ej la del ammo o el timbre)
@@ -80,20 +80,20 @@ public class Change_Scene : MonoBehaviour
         // lanza el rayo al espacio 3D usando la distancia maxima que se declaro anres y con el filtro de la capa interactuable
         if (Physics.Raycast(rayo, out hit, distanciaMaximaRayo, capaInteractuable))
         {
-            if (hit.transform == this.transform)
+            if (hit.transform == this.transform) // si contra lo que choca (coinciden los transform) el rayo es este objeto (el que tiene el script) 
             {
-                return true; 
+                return true; //saca true (estamirandoalojeto)
             }
         }
-        return false;
+        return false; //si no hace lo de arriba no choco
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player")) // coge algo que tenga la etiqueta de player (osea el player)
         {
-            jugadorCerca = true;
-            jugadorRef = other.gameObject; 
+            jugadorCerca = true; //dice que esta dentro
+            jugadorRef = other.gameObject; // se guarda la referencia la jugador
         }
     }
 
@@ -108,57 +108,56 @@ public class Change_Scene : MonoBehaviour
 
     private void IniciarCambioEscena()
     {
-        if(!yaClickado)
+        if(!yaClickado) //solo hace la logica si no hay una peticion activa procesandose en el momento (si no se ha clicado)
         {
-        if (jugadorRef != null)
+        if (jugadorRef != null) //si existe
         {
-            // Evitamos que el jugador se destruya al cambiar de escena
+            // el jugador no se destruye cuando cambia de escena
             DontDestroyOnLoad(jugadorRef); 
 
-            // Conseguimos sus componentes de movimiento
+            // conseguir componentes de movimiento para pararlo y se guarda 
             CharacterController controller = jugadorRef.GetComponent<CharacterController>();
             PlayerInput inputSystem = jugadorRef.GetComponent<PlayerInput>();
             Rigidbody rb = jugadorRef.GetComponent<Rigidbody>();
 
-            // Desactivamos sus componentes para que no pueda interactuar ni moverse
+            // se desactivan los componentes para que no pueda interactuar ni moverse
             if (controller != null) controller.enabled = false;
+
             if (inputSystem != null) inputSystem.enabled = false;
+
             if (rb != null)
-            {
-                rb.linearVelocity = Vector3.zero;
-                rb.isKinematic = true;
-            }
+                {
+                    rb.linearVelocity = Vector3.zero; //velocidad a cero del rigidbody en todas direcciones
+                    rb.isKinematic = true; //no le afecta la gravedad ni las fisicas
+                }
 
-            // Hacemos que este script sobreviva temporalmente para encargarse de descongelar todo en la nueva escena
-            DontDestroyOnLoad(this.gameObject);
+                // este script sobrevive temporalmente porque no se destruye el jug para encargarse de descongelar todo en la nueva escena
+                DontDestroyOnLoad(this.gameObject);
 
-            // Iniciamos la cuenta atrás pasando el jugador como parámetro
-            StartCoroutine(TemporizadorCongelarJuego(segundosCongelado, jugadorRef));
+                // inicia la cuenta atras pasando el jugador como parametro (para dejarlo quieto)
+                StartCoroutine(TemporizadorCongelarJuego(segundosCongelado, jugadorRef));
         }
 
-        // Cargamos la nueva escena de forma inmediata
+        // cargamos nueva escena
         SceneManager.LoadScene(nombreEscenaAInvocarse);
-        yaClickado=false;
+        yaClickado = false; //saca que no se ha clicado para reutilizar el codigo luego
         }
     }
 
     private IEnumerator TemporizadorCongelarJuego(float tiempoEspera, GameObject jugador)
     {
-        // 1. ESPERA UN FOTOGRAMA: Nos aseguramos de que Unity ya esté cargando/cargado la nueva escena
+        // espera un fotograma, en el qu
         yield return null;
 
-        // 2. CONGELAMOS EL TIEMPO GLOBAL DEL JUEGO
+        // congelar tiempo
         Time.timeScale = 0f;
-        Debug.Log($"Juego congelado en la nueva escena. Esperando {tiempoEspera} segundos...");
 
-        // 3. ESPERA LOS SEGUNDOS ESPECIFICADOS
-        // Usamos WaitForSecondsRealtime porque WaitForSeconds normal no avanza si Time.timeScale es 0
+        // WaitForSecondsRealtime porque WaitForSeconds normal no avanza si timeScale es 0
         yield return new WaitForSecondsRealtime(tiempoEspera);
 
-        // 4. DESCONGELAMOS EL TIEMPO GLOBAL DEL JUEGO
         Time.timeScale = 1f;
 
-        // 5. DEVOLVEMOS EL MOVIMIENTO AL JUGADOR
+        // devolver mov a jugador
         if (jugador != null)
         {
             CharacterController controller = jugador.GetComponent<CharacterController>();
@@ -168,14 +167,12 @@ public class Change_Scene : MonoBehaviour
             if (controller != null) controller.enabled = true;
             if (inputSystem != null) inputSystem.enabled = true;
             if (rb != null) rb.isKinematic = false;
-
-            Debug.Log("¡Tiempo de espera finalizado! Todo vuelve a la normalidad.");
         }
 
-        // Buscamos la nueva cámara principal de la escena recién cargada para futuros comportamientos
+        // busca nueva camara principal de la escena recien cargada (de momento no hace falta)
         camaraPrincipal = Camera.main;
 
-        // Destruimos este objeto del botón interactuable que ya cumplió su función
+        // destruye este objeto, solo se usa 1 vez
         Destroy(this.gameObject);
     }
 }

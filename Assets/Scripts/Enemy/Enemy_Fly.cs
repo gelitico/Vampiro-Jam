@@ -25,10 +25,10 @@ public class Enemy_Fly : MonoBehaviour
             }
         }
 
-        //  SOLO SI YA ENCONTRÓ AL JUGADOR, SE MUEVE HACIA ÉL
+        // solo si encuentra al jug se mueve hacia el
         if (Player != null)
         {
-            // Movimiento hacia el personaje        
+            // movimiento hacia el personaje        
             Vector3 targetPosition = new Vector3(Player.position.x, Player.position.y + alturaanyadida, Player.position.z);//creamos posicion de destino(target position) con las coordenadas del jugador
         
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, flightSpeed * Time.deltaTime);//movre towards mueve al enemigo desde su posicion actual, a la posicion de destino 
