@@ -31,7 +31,7 @@ public class Intro : MonoBehaviour
 
     private IEnumerator EsperarYCargarMenu()
     {
-        yield return new WaitForSeconds(13f);//espera exactamente lo q dura
+        yield return new WaitForSeconds(15f);//espera exactamente lo q dura
         CargarMenuDirecto();
         // Carga la escena 
        

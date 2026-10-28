@@ -29305,7 +29305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5225263664628314498, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: flightSpeed
-      value: 6
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 5225263664628314498, guid: 989619a77fdbdfb4f9c2cafc10616947, type: 3}
       propertyPath: alturaanyadida
